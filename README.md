@@ -1,7 +1,7 @@
 # resistor-network-option3-hyperiondev
 
 *************************************
-Calculating resistance
+# Calculating resistance
 
 Resistors are electrical components that add resistance to a circuit. Resistance is measured in ohms. When resistors are connected in series, the total resistance is merely the sum of the individual resistances:
 
@@ -33,7 +33,7 @@ resist("(6, [8, (4, [8, (4, [6, (8, [6, (10, 2)])])])])") ➞ 10
 
 ********************************************************************
 
-Running the code
+# Running the code
 
 1. Download the zip file or clone the project
 2. In the root folder open main.py
@@ -49,3 +49,10 @@ text7 = "([([(470, 680), 330], 1000), 470], 680)"
 text8 = "(6, [8, (4, [8, (4, [6, (8, [6, (10, 2)])])])])"
 
 4. If you want to enter your own values, run the function: update_resistance_for_all(text) in main.py.
+
+
+****************************************************
+
+# Logic behind code
+
+The thought process on calculating the overall resistance of the circuit was to first determine the values inside the the brackets. The code starts by finding the child values from the outer most bracket and works its way to the inner most brackets, until there are no more brackets to find. Afterwards, the resistance values inside the inner most brackets are determined. This processes is than repeated, determing the inner most brackets and using the solutions to find the resistance for the outer most brackets.  
