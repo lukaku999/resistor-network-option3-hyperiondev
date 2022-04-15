@@ -41,8 +41,10 @@ def update_resistance(bracket_data, level):
                 for i in bracket_data['all_brackets']:
 
                     if child_bracket.id == i.id:
+                        #print(i.resistance)
                         bracket_values.append(i.resistance)
             values = bracket_values + (bracket.children['int'])
+
             update_resistance_inside_object(bracket_data, bracket, values)
 
     return bracket_data

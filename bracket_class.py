@@ -1,7 +1,9 @@
 import uuid
 
+#the resistor class is an class the describes resistors whose values need to be calculated within brackets
 class resistor:
     def __init__(self, text):
+        #self text refers to text inside brackets enclosures
         self.children = {}
         self.level = 0
         self.id = uuid.uuid4()
@@ -35,7 +37,7 @@ class resistor:
             return "entered wrong resistor_type"
 
     def obtain_bracket_indexes(self):
-        # determines the index of child brackets(round or square brackets).
+        # determines the index of child brackets from self.text(round or square brackets).
         bracket_array = []
         bracket_object = {}
         for index, bracket in enumerate(self.text):
@@ -54,6 +56,8 @@ class resistor:
         return bracket_object
 
     def find_children_brackets_indexes(self):
+        #the method determines all children indexes (does not determine children that is a number) with brackets text within current bracket
+        result = []
         children_brackets = []
         bracket_indexes = self.obtain_bracket_indexes()
         for i, c in enumerate(bracket_indexes):
@@ -66,10 +70,11 @@ class resistor:
                     else:
                         children_brackets.append([c, bracket_indexes[c]])
                         break
-
-        return children_brackets
+        [result.append(x) for x in children_brackets if x not in result]
+        return result
 
     def find_children(self, child_level):
+        #finds all children brackets and creates a resistor object that. The resistance for child values will be calculated and later updated within this object. Afterwards, all values will be used to determine the resistance value
         translation = 0
         string = self.text
         child_brackets_index = self.find_children_brackets_indexes()
@@ -90,6 +95,7 @@ class resistor:
             string = string[0: start:] + string[stop + 1::]
             translation = start - stop - 1
 
+        #finds all the children within bracket enclosure that are numbers
         self.children['brackets'] = children_bracket_array
         children_int = string.split(',')
         self.children['int'] = []
