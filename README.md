@@ -1,7 +1,7 @@
 # resistor-network-option3-hyperiondev
 
 *************************************
-Calculating resistors
+Calculating resistance
 
 Resistors are electrical components that add resistance to a circuit. Resistance is measured in ohms. When resistors are connected in series, the total resistance is merely the sum of the individual resistances:
 
